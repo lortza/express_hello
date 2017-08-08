@@ -10,7 +10,13 @@ app.set('view engine', 'hbs');
 // set up basic application based on the express package
 // In this case, when our app receives a get request to the top-level path (/), it will send back the string "Hello World!" as its response
 app.get('/', function (request, response) {
-  response.send('Hello World!');
+  response.render('home');
+});
+
+app.get('/:name', function (req, res) {
+  const infoFromParams = req.params.name;
+  // res.send(`Hello ${name}`);
+  res.render('home', { whoDat: infoFromParams });
 });
 
 // enable server to run
